@@ -171,6 +171,8 @@ def main():
         .getOrCreate()
     )
 
+    spark.sparkContext.setLogLevel("ERROR")
+
     try:
         as_of = datetime.now(timezone.utc).date()
         start_90d = as_of - timedelta(days=89)
