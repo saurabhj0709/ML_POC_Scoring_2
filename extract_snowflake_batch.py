@@ -12,7 +12,7 @@ If a batch fails, the run is INCOMPLETE; do not use its data for scoring.
 """
 
 import os
-from datetime import datetime, timedelta, timezonegit
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from dotenv import load_dotenv
