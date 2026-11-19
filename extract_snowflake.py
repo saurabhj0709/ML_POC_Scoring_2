@@ -10,7 +10,7 @@ from pyspark.sql import functions as F
 
 
 # --------------------- CHANGE ONLY THIS FOR FULL RUN ---------------------
-TEST_MODE = True             # Change to False AFTER the 5-customer test succeeds
+TEST_MODE = False            # Change to False AFTER the 5-customer test succeeds
 TEST_CUSTOMER_MAX = 5
 # ------------------------------------------------------------------------
 
