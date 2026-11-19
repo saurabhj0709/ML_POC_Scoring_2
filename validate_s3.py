@@ -19,5 +19,6 @@ df = spark.read.parquet(s3_path)
 print("Number of rows:", df.count())
 print("Number of columns:", len(df.columns))
 print("Column names:", df.columns)
+print(df.show(5))
 
 spark.stop()
