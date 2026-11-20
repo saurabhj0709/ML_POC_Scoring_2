@@ -31,7 +31,7 @@ INPUT_S3_PATH = (
 )
 
 # Change test_001/full_001 on each new run; Spark will not overwrite results.
-TEST_MODE = True  # True: 5 customers. False: all 1,000,000 customers.
+TEST_MODE = False  # True: 5 customers. False: all 1,000,000 customers.
 TEST_OUTPUT_S3_PATH = "s3a://mlops-poc2/predictions/churn/test_001/"
 FULL_OUTPUT_S3_PATH = "s3a://mlops-poc2/predictions/churn/full_001/"
 OUTPUT_S3_PATH = TEST_OUTPUT_S3_PATH if TEST_MODE else FULL_OUTPUT_S3_PATH
@@ -179,6 +179,7 @@ def main():
         SparkSession.builder
         .appName("Churn_Batch_Scoring")
         .master("local[2]")  # Same two-core EC2 configuration as extraction script.
+        .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:3.4.1")
         .config("spark.sql.session.timeZone", "UTC")
         .config("spark.sql.execution.arrow.maxRecordsPerBatch", "2000")
         .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
